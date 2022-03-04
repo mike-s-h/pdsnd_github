@@ -13,50 +13,74 @@ DAY_DATA    =   { 'monday': '1', 'tuesday' :'2', 'wednesday': '3',
                 'thursday': '4', 'friday': '5', 'saturday': '6', 'sunday': '7', 'nf': '0' }
 
 
-def get_filters():
-    print('='*70 + '\nHello! Let\'s explore some US bikeshare data!')
-
+def check_data_entry(prompt, valid_entries): 
+    """
+    Asks user to type some input and verify if the entry typed is valid.
+    Since we have 3 inputs to ask the user in get_filters(), it is easier to write a function.
+    Args:
+        (str) prompt - message to display to the user
+        (list) valid_entries - list of string that should be accepted 
+    Returns:
+        (str) user_input - the user's valid input
+    """
     try:
-        print('='*70 + '\nData is available for the following cities:\n' + '='*70)
-        for cities in CITY_DATA:
-            print('>>> ', cities.title())
+        user_input = str(input(prompt)).lower()
 
-        while True:    
-            city = input('='*70 + '\nPlease enter the name of the city you want to analyze: ').lower()
-            
-            if city in CITY_DATA:
-                break
-            else:
-                print('\n>>> Your input does not match the given choices! <<<')
+        while user_input not in valid_entries : 
+            print('\n>>> Your input does not match the given choices! <<<')
+            print('\n>>> Let\'s try again! <<<')
+            user_input = str(input(prompt)).lower()
 
-        print('='*70 + '\nThe following months are available for evaluation (nf = no filter):\n' + '='*70)
+        print('Thank you! The chosen input is: {}\n'.format(user_input))
+        return user_input
+
+    except:
+        print('Seems like there is an issue with your input')
         
-        for months in MONTH_DATA:
-            print('>>>', months.title())
-        
-        while True:
-            month = input('='*70 + '\nPlease enter the name of the month or "nf" for no filter: ').lower()
-            
-            if month in MONTH_DATA:
-                break
-            else:
-                print('\n>>> Your input does not match the given choices! <<<')
-        
-        print('='*70 + '\nThe following days are available for evaluation (nf = no filter):\n' + '='*70)
-        for days in DAY_DATA:
-            print('>>>', days.title())
 
-        while True:
-            day = input('='*70 + '\nPlease enter the name of the day or "nf" for no filter: ').lower()
-                    
-            if day in DAY_DATA:
-                break                    
-            else:                                                
-                print('\n>>> Your input does not match the given choices! <<<')
+def get_filters(): 
+    """
+    Asks user to specify a city, month, and day to analyze.
+
+    Returns:
+        (str) city - name of the city to analyze
+        (str) month - name of the month to filter by, or "all" to apply no month filter
+        (str) day - name of the day of week to filter by, or "all" to apply no day filter
+    """
+
+    print('Hi there! Let\'s explore some US bikeshare data!')
+
+    # get user input for city
+    print('='*70 + '\nData is available for the following cities:\n' + '='*70)
+    for cities in CITY_DATA:
+        print('>>> ', cities.title())
+
+    valid_cities = CITY_DATA
+    prompt_cities = '\nPlease enter the name of the city you want to analyze: '
+    city = check_data_entry(prompt_cities, valid_cities)
 
 
-    except Exception as e:
-            print(e) 
+    # get user input for month
+    print('='*70 + '\nThe following months are available for evaluation (nf = no filter):\n' + '='*70)
+    for months in MONTH_DATA:
+        print('>>>', months.title())
+
+    valid_months = MONTH_DATA
+    prompt_month = '='*70 + '\nPlease enter the name of the month or "nf" for no filter: '
+    month = check_data_entry(prompt_month, valid_months)
+
+
+    # get user input for day of week
+    print('='*70 + '\nThe following days are available for evaluation (nf = no filter):\n' + '='*70)
+    for days in DAY_DATA:
+        print('>>>', days.title())
+
+    valid_days = DAY_DATA
+    prompt_day = '='*70 + '\nPlease enter the name of the day or "nf" for no filter: '
+    day = check_data_entry(prompt_day, valid_days)
+
+    print('='*70)
+
     return city, month, day
 
 
