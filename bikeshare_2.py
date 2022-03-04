@@ -199,6 +199,8 @@ def raw_data(df, city, month, day):
     num_row_start = 0
     num_row_end = num_row -1
 
+    pd.set_option('display.max_columns',200) #prevents collapsed columns
+
     print('Do you want to se some raw data from current dataset?')
 
     while True:
