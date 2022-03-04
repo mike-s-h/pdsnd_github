@@ -13,6 +13,7 @@ DAY_DATA    =   { 'monday': '1', 'tuesday' :'2', 'wednesday': '3',
                 'thursday': '4', 'friday': '5', 'saturday': '6', 'sunday': '7', 'nf': '0' }
 
 
+<<<<<<< HEAD
 def check_data_entry(prompt, valid_entries): 
     """
     Asks user to type some input and verify if the entry typed is valid.
@@ -23,6 +24,24 @@ def check_data_entry(prompt, valid_entries):
     Returns:
         (str) user_input - the user's valid input
     """
+||||||| 5c5d355
+def get_filters():
+    print('='*70 + '\nHello! Let\'s explore some US bikeshare data!')
+
+=======
+def get_filters():
+    """
+    Creates filters for loading the data.
+
+    These possible filters can be used:
+    - filter by city
+    - filter by month January to June or all months
+    - filter by day of week or all all days of week
+    """
+
+    print('='*70 + '\nHello! Let\'s explore some US bikeshare data!')
+
+>>>>>>> documentation
     try:
         user_input = str(input(prompt)).lower()
 
@@ -217,6 +236,12 @@ def user_stats(df, city, month, day):
     
 
 def raw_data(df, city, month, day):
+    """
+    Creates a query to view raw data in tabular form. 
+    
+    Then the raw data can be displayed with 5 rows each.
+    """
+    
     print('\n\n\nThere are >>> ' + str(len(df)) + ' rows <<< of raw data available.')
 
     num_row = 5
