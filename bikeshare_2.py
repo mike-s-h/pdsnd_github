@@ -22,7 +22,7 @@ def get_filters():
     - filter by month January to June or all months
     - filter by day of week or all all days of week
     """
-    
+
     print('='*70 + '\nHello! Let\'s explore some US bikeshare data!')
 
     try:
@@ -202,6 +202,12 @@ def user_stats(df, city, month, day):
     
 
 def raw_data(df, city, month, day):
+    """
+    Creates a query to view raw data in tabular form. 
+    
+    Then the raw data can be displayed with 5 rows each.
+    """
+    
     print('\n\n\nThere are >>> ' + str(len(df)) + ' rows <<< of raw data available.')
 
     num_row = 5
