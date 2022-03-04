@@ -14,6 +14,15 @@ DAY_DATA    =   { 'monday': '1', 'tuesday' :'2', 'wednesday': '3',
 
 
 def get_filters():
+    """
+    Creates filters for loading the data.
+
+    These possible filters can be used:
+    - filter by city
+    - filter by month January to June or all months
+    - filter by day of week or all all days of week
+    """
+    
     print('='*70 + '\nHello! Let\'s explore some US bikeshare data!')
 
     try:
